@@ -11,9 +11,9 @@
 <div id="layout">
   <div id="header">
     <% if nil == session[ :user_id ] %>
-      <%= link_to( '로그인', new_session_path )%>
+      <%= link_to( '로그인', new_session_path ) %>
     <% else %>
-      <%= link_to( '로그아웃', session_path, :method => :delete )%>
+      <%= link_to( '로그아웃', session_path, :method => :delete ) %>
     <% end %>
   </div>
   <div id="sidebar">

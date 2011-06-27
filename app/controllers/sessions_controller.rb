@@ -19,8 +19,12 @@ class SessionsController < ApplicationController
       
       if encrypted == user.encrypted_password
         session[ :user_id ] = user.id
-      end  
+        
+        redirect_to( users_path ) and return
+      end
     end
+    
+    redirect_to( new_session_path )
   end
   
   public
