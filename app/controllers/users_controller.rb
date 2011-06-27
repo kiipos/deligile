@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   
   public
   def index()
+    if nil == session[ :user_id ]
+      redirect_to( new_session_path ) and return
+    end
+    
     @users = User.find( :all )
   end
   

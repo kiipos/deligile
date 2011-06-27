@@ -15,9 +15,17 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to( users_path )
   end
   
-  test( 'should get users' ) do
+  test( 'should not get users' ) do
     parameters = { :format => :html }
     get( :index, parameters )
+    
+    assert_redirected_to( new_session_path )
+  end
+  
+  test( 'should get users' ) do
+    parameters = { :format => :html }
+    user = users( :user_1 )
+    get( :index, parameters, :user_id => user.id )
     
     assert_template( 'index' )
   end
