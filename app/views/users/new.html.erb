@@ -1,0 +1,18 @@
+<%= form_for( @user ) do | f |%>
+  <p>
+    <%= f.label( :sign_in_id, '아이디' ) %>
+    <%= f.text_field( :sign_in_id ) %>  
+  </p>
+  <p>
+    <%= f.label( :email, '이메일' ) %>
+    <%= f.text_field( :email ) %>  
+  </p>
+  <p>
+    <%= f.label( :password, '비밀번호' ) %>
+    <%= f.password_field( :password ) %>  
+  </p>
+  
+  <p>
+    <%= f.submit( '추가' ) %>
+  </p>
+<% end %>

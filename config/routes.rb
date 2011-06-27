@@ -1,4 +1,6 @@
 Deligile::Application.routes.draw do
+  resources( :sessions, :only => [ :new, :create ] )
+  resource( :session, :only => [ :destroy ] ) # match( '/session' => 'sessions#destory', :method => :delete )
   resources( :users )
   
   # The priority is based upon order of creation:
