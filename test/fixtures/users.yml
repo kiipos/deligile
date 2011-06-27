@@ -9,3 +9,9 @@
 #
 # two: {}
 #  column: value
+
+user_1:
+  sign_in_id: deli
+  email: contact@delimount.com
+  salt: americano
+  encrypted_password: <%= User.encrypt_password( '121212', 'americano' )
