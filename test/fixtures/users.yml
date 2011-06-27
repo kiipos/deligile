@@ -10,8 +10,13 @@
 # two: {}
 #  column: value
 
+<%
+  user = User.new()
+  salt = user.object_id.to_s() + rand.to_s()
+%>
+
 user_1:
   sign_in_id: deli
   email: contact@delimount.com
-  salt: americano
-  encrypted_password: <%= User.encrypt_password( '121212', 'americano' )
+  salt: <%= salt %>
+  encrypted_password: <%= User.encrypt_password( '121212', salt )
