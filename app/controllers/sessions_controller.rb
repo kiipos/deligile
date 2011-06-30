@@ -17,6 +17,9 @@ class SessionsController < ApplicationController
     if nil != user
       encrypted = User.encrypt_password( params[ :password ], user.salt )
       
+
+
+
       if encrypted == user.encrypted_password
         session[ :user_id ] = user.id
         
