@@ -13,20 +13,10 @@
 ActiveRecord::Schema.define(:version => 20110630014700) do
 
   create_table "stories", :force => true do |t|
-    t.integer  "user_id"
     t.string   "title"
-    t.string   "content"
-    t.string   "comment"
-    t.string   "person_in_charge_id"
-    t.integer  "requiring_time"
-    t.integer  "spending_time"
+    t.string   "description"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
-
-  add_index "stories", ["created_at"], :name => "index_stories_on_created_at"
-  add_index "stories", ["person_in_charge_id"], :name => "index_stories_on_person_in_charge_id"
-  add_index "stories", ["user_id"], :name => "index_stories_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "sign_in_id"

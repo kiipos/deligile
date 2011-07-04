@@ -1,0 +1,10 @@
+<%= form_for( @story ) do | form | %>
+  <p>
+    <%= form.label( :title, '제목' ) %>
+    <%= form.text_field( :title ) %>
+  </p>
+  <p>
+    <%= form.label( :description, '내용' )%>
+    <%= form.text_field( :description ) %>
+  </p>
+<% end %>
