@@ -1,6 +1,6 @@
 Deligile::Application.routes.draw do
   resources( :sessions, :only => [ :new, :create ] )
-  resource( :session, :only => [ :destroy ] ) # match( '/session' => 'sessions#destory', :method => :delete )
+  resource ( :session, :only => [ :destroy ] )
   resources( :stories )
   resources( :users )
   
