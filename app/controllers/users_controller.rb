@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_filter( :authenticate, :only => [ :new, :create ] )
+
   public
   def destroy()
     @user = User.find( params[ :id ] )

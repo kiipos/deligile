@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background-color: #eee;
+}
+
+#layout {
+  margin: 0 auto;
+  width: 900px;
+  background-color: #fff;
+}

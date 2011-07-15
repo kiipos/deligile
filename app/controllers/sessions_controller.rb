@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_filter( :authenticate, :only => [ :new, :create ] )
+  
   public
   def destroy()
     session[ :user_id ] = nil

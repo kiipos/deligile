@@ -5,7 +5,7 @@ class UsersControllerTest < ActionController::TestCase
   test( 'should destroy user' ) do
     user = users( :user_1 )
     parameters = { :format => :html, :id => user.id }
-    delete( :destroy, parameters )
+    delete( :destroy, parameters, :user_id => user.id )
     
     user_id = assigns( :user ).id
     assert_raise( ActiveRecord::RecordNotFound ) do
@@ -17,7 +17,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test( 'should not get users' ) do
     parameters = { :format => :html }
-    get( :index, parameters )
+    get( :index, parameters, :user_id => nil )
     
     assert_redirected_to( new_session_path )
   end
