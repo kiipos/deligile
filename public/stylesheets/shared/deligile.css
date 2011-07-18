@@ -13,8 +13,12 @@ body {
 }
 
 /*
- * global_navigation
+ * header
  */
+#header {
+  height: 60px;
+}
+
 #global_navigation {
   float: left;
   list-style: none;
@@ -43,11 +47,27 @@ body {
  */
 #side_bar {
   clear: both;
+  float: left;
+  padding: 10px;
+  width: 180px;
+  background-color: #faa;
 }
 
 /*
  * content
  */
 #content {
+  float: right;
+  padding: 10px;
+  width: 680px;
+  background-color: #afa;
+}
+
+/*
+ * footer 
+ */
+#footer {
   clear: both;
+  height: 40px;
+  background-color: #aaf;
 }

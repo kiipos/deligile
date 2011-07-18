@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title>Deligile</title>
+  <%= stylesheet_link_tag( 'shared/deligile.css' ) %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="layout">
+  <%= render( 'shared/header' ) %>
+  
+  <div id="side_bar">
+    <ul id="local_navigation">
+      <li><%= link_to( '전체 사용자', users_path )%></li>
+      <li><%= link_to( '새 사용자', new_user_path )%></li>
+    </ul>
+  </div>
+  
+  <div id="content">
+    <%= yield %>
+  </div>
+  
+  <%= render( 'shared/footer' ) %>
+</div>
+
+</body>
+</html>

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
 <html>
 <head>
   <title>Deligile</title>
@@ -7,34 +8,18 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<div id="layout">
-  <div id="header">
-    <ul id="global_navigation">
-      <li><%= link_to( '스토리', stories_path )%></li>
-      <li><%= link_to( '사용자', users_path )%></li>
-    </ul>
+  <div id="layout">
+    <%= render( 'shared/header' ) %>
     
-    <ul id="account">
-      <% if nil == session[ :user_id ] %>
-        <li><%= link_to( '회원가입', new_user_path ) %></li>
-        <li><%= link_to( '로그인', new_session_path ) %></li>
-      <% else %>
-        <li><%= link_to( '로그아웃', session_path, :method => :delete ) %></li>
-      <% end %>
-    </ul>
+    <div id="side_bar">
+    </div>
+    
+    <div id="content">
+      <%= yield %>
+    </div>
+    
+    <div id="footer">
+    </div>
   </div>
-  
-  <div id="side_bar">
-  </div>
-  
-  <div id="content">
-    <%= yield %>
-  </div>
-  
-  <div id="footer">
-  </div>
-</div>
-
 </body>
 </html>

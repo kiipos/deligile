@@ -1,0 +1,15 @@
+<div id="header">
+  <ul id="global_navigation">
+    <li><%= link_to( '스토리', stories_path )%></li>
+    <li><%= link_to( '사용자', users_path )%></li>
+  </ul>
+  
+  <ul id="account">
+    <% if nil == session[ :user_id ] %>
+      <li><%= link_to( '회원가입', new_user_path ) %></li>
+      <li><%= link_to( '로그인', new_session_path ) %></li>
+    <% else %>
+      <li><%= link_to( '로그아웃', session_path, :method => :delete ) %></li>
+    <% end %>
+  </ul>
+</div>
