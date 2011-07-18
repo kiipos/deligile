@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   SEED = 'Beansgirl'
   
+  has_many( :stories, :foriegn_key => :creator_id )
+  
   attr_reader( :password )
   attr_accessible( :sign_in_id, :email, :password )
 
