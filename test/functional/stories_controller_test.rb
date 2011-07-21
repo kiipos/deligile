@@ -1,5 +1,4 @@
 require( './test_helper' )
-require( 'factory_girl' )
 
 
 class StoriesControllerTest < ActionController::TestCase

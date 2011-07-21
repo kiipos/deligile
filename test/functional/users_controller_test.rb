@@ -2,18 +2,13 @@ require( './test_helper' )
 
 
 class UsersControllerTest < ActionController::TestCase
-  test( 'should destroy user' ) do
-    user = users( :user_1 )
-    parameters = { :format => :html, :id => user.id }
-    delete( :destroy, parameters, :user_id => user.id )
-    
-    user_id = assigns( :user ).id
-    assert_raise( ActiveRecord::RecordNotFound ) do
-      User.find( user_id )
-    end
-    
-    assert_redirected_to( users_path )
+  def setup()
+    @user = Factory( :user )
   end
+  
+  #
+  #
+  #
   
   test( 'should not get users' ) do
     parameters = { :format => :html }
@@ -24,8 +19,7 @@ class UsersControllerTest < ActionController::TestCase
   
   test( 'should get users' ) do
     parameters = { :format => :html }
-    user = users( :user_1 )
-    get( :index, parameters, :user_id => user.id )
+    get( :index, parameters, :user_id => @user.id )
     
     assert_template( 'index' )
   end
@@ -56,4 +50,16 @@ class UsersControllerTest < ActionController::TestCase
     
     assert_template( 'new' )
   end
+
+  # test( 'should destroy user' ) do
+    # parameters = { :format => :html, :id => user.id }
+    # delete( :destroy, parameters, :user_id => user.id )
+#     
+    # user_id = assigns( :user ).id
+    # assert_raise( ActiveRecord::RecordNotFound ) do
+      # User.find( user_id )
+    # end
+#     
+    # assert_redirected_to( users_path )
+  # end
 end
