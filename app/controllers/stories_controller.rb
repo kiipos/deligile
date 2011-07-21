@@ -14,7 +14,9 @@ class StoriesController < ApplicationController
   
   public
   def create()
-    @story = Story.create( params[ :story ] )
+    @story = Story.create!( params[ :story ] ) do | story |
+      story.creator_id = session[ :user_id ]
+    end
     
     redirect_to( stories_path )
   end

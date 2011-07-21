@@ -34,6 +34,8 @@ class StoriesControllerTest < ActionController::TestCase
 
     story = Story.find( assigns( :story ) )
     assert_equal( title, story.title )
+    assert_equal( @user, story.creator )
+    # assert_equal( @user.id, story.creator_id )
     
     assert_redirected_to( stories_path )
   end

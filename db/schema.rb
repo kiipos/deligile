@@ -10,13 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718094635) do
+ActiveRecord::Schema.define(:version => 20110721095244) do
 
   create_table "stories", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"
     t.integer  "creator_id"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "story_id"
+    t.integer  "creator_id"
+    t.string   "description"
+    t.datetime "created_at"
   end
 
   create_table "users", :force => true do |t|
