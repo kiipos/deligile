@@ -1,0 +1,8 @@
+<h2><%= @story.title %></h2>
+
+<div><%= @story.description%></div>
+
+<ul>
+  <li><%= link_to( '삭제', story_path( @story ), :method => :delete, 
+    :confirm => '삭제하시겠습니까?' ) %></li>
+</ul>

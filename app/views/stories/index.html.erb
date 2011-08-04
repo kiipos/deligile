@@ -1,10 +1,12 @@
 <ul>
   <% @stories.each() do | story | %>
     <li>
-      <%= story.title %>
+      <%= link_to( story.title, story_path( story ) ) %>
+      <!--
       <%= story.description %>
       <%= link_to( '삭제', story_path( story.id), :method => :delete, 
-        :confirm => '삭제하시겠습니까?' ) %>   
+        :confirm => '삭제하시겠습니까?' ) %>
+      -->   
     </li>
   <% end %>
 </ul>

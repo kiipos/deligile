@@ -1,5 +1,16 @@
 class StoriesController < ApplicationController
   public
+  def show()
+    begin
+      @story = Story.find( params[ :id ] )
+    rescue
+      flash[ :failure ] = 'invalid story id' 
+      redirect_to( stories_path )
+      return      
+    end
+  end
+  
+  public
   def destroy()
     @story = Story.find( params[ :id ] )
     @story.destroy()

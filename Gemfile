@@ -9,9 +9,11 @@ gem 'sqlite3'
 
 gem( 'mongrel', '~> 1.2.0.pre2' )
 
-group( :test ) do
-  gem( 'factory_girl_rails', '1.0' )
+group( :development, :test ) do
+  gem( 'factory_girl_rails' )
+  gem( 'rspec-rails' )
 end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
