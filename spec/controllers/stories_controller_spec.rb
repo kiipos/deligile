@@ -3,7 +3,8 @@ require( 'spec_helper' )
 
 describe( StoriesController ) do
   before( :each ) do
-    @story = Factory( :story )
+    @task = Factory( :task )
+    @story = @task.story
     @user = @story.creator
     session[ :user_id ] = @user.id
   end
@@ -14,6 +15,13 @@ describe( StoriesController ) do
         get( :show, :id => 0 )
         response.should redirect_to( stories_path )
       end
+    end
+    
+    it( 'should have tasks' ) do
+      get( :show, :id => @story.id )
+
+      tasks = assigns( :tasks )
+      tasks.should be_include( @task )
     end
     
     it( 'should render show' ) do

@@ -2,7 +2,15 @@
 
 <div><%= @story.description%></div>
 
+<h3>작업</h3>
+<%= form_for( [ @story, @task ] ) do | form | %>
+  <%= form.text_field( :description )%>
+  <%= form.submit( '추가' )%>
+<% end %>
+<%= render( @tasks )%>
+
 <ul>
   <li><%= link_to( '삭제', story_path( @story ), :method => :delete, 
     :confirm => '삭제하시겠습니까?' ) %></li>
 </ul>
+

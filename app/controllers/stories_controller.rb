@@ -8,6 +8,9 @@ class StoriesController < ApplicationController
       redirect_to( stories_path )
       return      
     end
+    
+    @task = Task.new()
+    @tasks = @story.tasks
   end
   
   public
