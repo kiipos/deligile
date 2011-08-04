@@ -3,9 +3,42 @@ require( 'spec_helper' )
 
 describe( TasksController ) do
   before( :each ) do
-    @story = Factory( :story )
+    @task = Factory( :task )
+    @story = @task.story
     @user = @story.creator
     session[ :user_id ] = @user.id
+  end
+  
+  describe( :destroy ) do
+    it( 'should destroy a task' ) do
+      delete( :destroy, :story_id => @story.id, :id => @task.id )
+
+      task = assigns( :task )
+      task.should be_destroyed      
+    end
+
+    it( 'should redirect to story' ) do
+      delete( :destroy, :story_id => @story.id, :id => @task.id )
+      
+      path = story_path( @story )
+      response.should redirect_to( path )
+    end
+  end 
+  
+  describe( :edit ) do
+    describe( 'invalid id' ) do
+      it( 'should redirect to stories#show' ) do
+        get( :edit, :story_id => @story.id, :id => 0 )
+        
+        path = story_path( @story )
+        response.should redirect_to( path )
+      end
+    end
+    
+    it( 'should render edit' ) do
+      get( :edit, :story_id => @story.id, :id => @task.id )
+      response.should render_template( 'edit' )
+    end
   end
   
   describe( :post ) do

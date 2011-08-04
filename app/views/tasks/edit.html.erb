@@ -1,0 +1,11 @@
+<h2>작업</h2>
+
+<%= form_for( [ @story, @task ] ) do | form | %>
+  <%= form.text_field( :description ) %>
+  <%= form.submit( '저장' )%>
+<% end %>
+
+<ul>
+  <li><%= link_to( '삭제', story_task_path( @story, @task ), :method => :delete,
+    :confirm => '삭제하시겠습니까?' ) %></li>
+</ul>
