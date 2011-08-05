@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter( :authenticate )
   
+  protected
   def authenticate()
     if nil == session[ :user_id ]
       redirect_to( new_session_path )

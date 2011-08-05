@@ -3,6 +3,7 @@ require( 'spec_helper' )
 
 describe( TasksController ) do
   before( :each ) do
+    Factory( :task )
     @task = Factory( :task )
     @story = @task.story
     @user = @story.creator
