@@ -6,8 +6,37 @@ describe( TasksController ) do
     Factory( :task )
     @task = Factory( :task )
     @story = @task.story
-    @user = @story.creator
+    
+    @user = Factory( :user )
     session[ :user_id ] = @user.id
+    
+    @attributes = { :description => 'hello', :user_id => @user.id }
+  end
+  
+  describe( :update ) do
+    describe( 'invalid id' ) do
+      it( 'should redirect to stories#show' ) do
+        put( :update, :story_id => @story.id, :id => 0 )
+        
+        path = story_path( @story )
+        response.should redirect_to( path )
+      end
+    end
+    
+    it( 'should update attributes' ) do
+      put( :update, :story_id => @story.id, :id => @task.id, :task => @attributes )
+      
+      task = Task.find( assigns( :task ).id )
+      task.description.should == 'hello'
+      task.user_id == @user.id
+    end
+    
+    it( 'should redirect to stories#show' ) do
+      put( :update, :story_id => @story.id, :id => @task.id, :task => @attributes )
+      
+      path = story_path( @story )
+      response.should redirect_to( path )
+    end
   end
   
   describe( :destroy ) do

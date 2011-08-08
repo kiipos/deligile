@@ -5,7 +5,7 @@ describe( StoriesController ) do
   before( :each ) do
     @task = Factory( :task )
     @story = @task.story
-    @user = @story.creator
+    @user = Factory( :user )
     session[ :user_id ] = @user.id
   end
   

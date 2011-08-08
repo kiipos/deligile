@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_filter( :initialize_story )
-  before_filter( :initailize_task, :only => [ :edit, :destroy ] )
+  before_filter( :initailize_task, :only => [ :edit, :destroy, :update ] )
   
   protected
   def initailize_task()
@@ -25,6 +25,14 @@ class TasksController < ApplicationController
   end
   
   public
+  def update()
+    @task.update_attributes( params[ :task ] )
+    
+    path = story_path( @story )
+    redirect_to( path )
+  end
+  
+  public
   def destroy()
     @task.destroy()
     
@@ -34,6 +42,8 @@ class TasksController < ApplicationController
   
   public
   def edit()
+    @users = User.find( :all )
+    # @user_options = users
   end
 
   public

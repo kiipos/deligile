@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110805050816) do
+ActiveRecord::Schema.define(:version => 20110808015926) do
 
   create_table "stories", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"
     t.integer  "creator_id"
+    t.integer  "user_id"
   end
 
   create_table "tasks", :force => true do |t|
@@ -24,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20110805050816) do
     t.integer  "creator_id"
     t.string   "description"
     t.datetime "created_at"
-    t.integer  "worker_id"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

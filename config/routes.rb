@@ -1,4 +1,6 @@
 Deligile::Application.routes.draw do
+  root( :to => "stories#index" )
+  
   resources( :sessions, :only => [ :new, :create ] )
   resource( :session, :only => [ :destroy ] )
   resources( :stories ) do

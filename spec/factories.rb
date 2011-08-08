@@ -5,12 +5,13 @@ Factory.define( :user ) do | user |
 end
 
 Factory.define( :story ) do | story |
-  story.association( :creator, :factory => :user )
+  story.association( :user )
   story.title( 'title' )
   story.description( 'description' )
 end
 
 Factory.define( :task ) do | task |
+  task.association( :user )
   task.association( :story )
   task.description( 'description' )
 end

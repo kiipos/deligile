@@ -1,1 +1,8 @@
-<p><%= link_to( task.description, edit_story_task_path( @story, task ) ) %></p>
+<tr>
+  <td><%= link_to( task.description, edit_story_task_path( @story, task ) ) %></td>
+  <td>
+    <% if nil != task.user %>
+      <%= task.user.sign_in_id %>
+    <% end %>
+  </td>
+</tr>

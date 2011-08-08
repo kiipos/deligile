@@ -7,7 +7,15 @@
   <%= form.text_field( :description )%>
   <%= form.submit( '추가' )%>
 <% end %>
-<%= render( @tasks )%>
+
+<table>
+  <tr>
+    <th>내용</th>
+    <th>담당자</th>
+  <tr>
+    
+  <%= render( @tasks )%>
+</table>
 
 <ul>
   <li><%= link_to( '삭제', story_path( @story ), :method => :delete, 

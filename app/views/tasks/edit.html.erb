@@ -2,6 +2,7 @@
 
 <%= form_for( [ @story, @task ] ) do | form | %>
   <%= form.text_field( :description ) %>
+  <%= form.select( :user_id, '<option />' + options_from_collection_for_select( @users, :id, :sign_in_id, @task.user_id ) ) %>
   <%= form.submit( '저장' )%>
 <% end %>
 
