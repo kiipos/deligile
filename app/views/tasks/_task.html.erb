@@ -1,8 +1,10 @@
 <tr>
-  <td><%= link_to( task.description, edit_story_task_path( @story, task ) ) %></td>
+  <td><%= link_to( task.description, edit_task_path( task ) ) %></td>
   <td>
     <% if nil != task.user %>
-      <%= task.user.sign_in_id %>
+      <%= link_to( task.user.sign_in_id, user_path( task.user_id ) ) %>
     <% end %>
   </td>
+  <td><%= task.estimated_time %></td>
+  <td><%= task.working_time %></td>
 </tr>

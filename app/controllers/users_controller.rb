@@ -1,5 +1,18 @@
 class UsersController < ApplicationController
   skip_filter( :authenticate, :only => [ :new, :create ] )
+  
+  public
+  def show()
+    begin
+      @user = User.find( params[ :id ] )
+    rescue
+      flash[ :failure ] = 'invalid user id' 
+      redirect_to( stories_path )
+      return      
+    end
+    
+    @tasks = @user.tasks
+  end
 
   public
   def destroy()

@@ -1,6 +1,21 @@
 <h2><%= @story.title %></h2>
 
+<ul>
+  <li><%= link_to( '삭제', story_path( @story ), :method => :delete, 
+    :confirm => '삭제하시겠습니까?' ) %></li>
+</ul>
+
 <div><%= @story.description%></div>
+<div>
+  <p>
+    <label>예상 시간</label>
+    <%= @story.estimated_time %>    
+  </p>
+  <p>
+    <label>소요 시간</label>
+    <%= @story.working_time %>    
+  </p>
+</div>
 
 <h3>작업</h3>
 <%= form_for( [ @story, @task ] ) do | form | %>
@@ -12,13 +27,11 @@
   <tr>
     <th>내용</th>
     <th>담당자</th>
+    <th>예상 시간</th>
+    <th>소요 시간</th>
   <tr>
     
   <%= render( @tasks )%>
 </table>
 
-<ul>
-  <li><%= link_to( '삭제', story_path( @story ), :method => :delete, 
-    :confirm => '삭제하시겠습니까?' ) %></li>
-</ul>
 

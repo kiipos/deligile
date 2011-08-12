@@ -4,10 +4,10 @@ Deligile::Application.routes.draw do
   resources( :sessions, :only => [ :new, :create ] )
   resource( :session, :only => [ :destroy ] )
   resources( :stories ) do
-    resources( :tasks )
-    # resources( :tasks, :only => [ :new, :create ] )
+    # resources( :tasks )
+    resources( :tasks, :only => [ :new, :create ] )
   end
-  # resources( :tasks, :except => [ :new, :create ] )
+  resources( :tasks, :except => [ :new, :create ] )
   resources( :users )
   
   # The priority is based upon order of creation:

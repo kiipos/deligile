@@ -7,4 +7,14 @@ class Story < ActiveRecord::Base
   
   validates( :title, :presence => true )
   validates( :description, :presence => true )
+
+  public  
+  def working_time()
+    return tasks.inject( 0 ) { | sum, task | sum + ( task.working_time || 0 ) }
+  end
+
+  public  
+  def estimated_time()
+    return tasks.inject( 0 ) { | sum, task | sum + ( task.estimated_time || 0 ) }
+  end
 end

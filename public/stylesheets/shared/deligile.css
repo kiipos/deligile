@@ -50,7 +50,7 @@ body {
   float: left;
   padding: 10px;
   width: 180px;
-  background-color: #faa;
+  background-color: #ccc;
 }
 
 /*
@@ -60,7 +60,6 @@ body {
   float: right;
   padding: 10px;
   width: 680px;
-  background-color: #afa;
 }
 
 /*
@@ -69,5 +68,4 @@ body {
 #footer {
   clear: both;
   height: 40px;
-  background-color: #aaf;
 }

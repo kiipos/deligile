@@ -1,12 +1,29 @@
 <h2>작업</h2>
 
-<%= form_for( [ @story, @task ] ) do | form | %>
-  <%= form.text_field( :description ) %>
-  <%= form.select( :user_id, '<option />' + options_from_collection_for_select( @users, :id, :sign_in_id, @task.user_id ) ) %>
-  <%= form.submit( '저장' )%>
+<%= form_for( @task ) do | form | %>
+  <p>
+    <%= form.label( :description, '내용' ) %>
+    <%= form.text_field( :description ) %>
+  </p>
+  <p>
+    <%= form.label( :user_id, '담당자' ) %>
+    <%= form.select( :user_id, '<option />' + options_from_collection_for_select( @users, :id, :sign_in_id, @task.user_id ) ) %>
+  </p>
+  <p>
+    <%= form.label( :estimated_time, '예상 시간' ) %>
+    <%= form.text_field( :estimated_time ) %>
+  </p>
+  <p>
+    <%= form.label( :working_time, '소요 시간' ) %>
+    <%= form.text_field( :working_time ) %>
+  </p>
+  
+  <p>
+    <%= form.submit( '저장' )%>
+  </p>
 <% end %>
 
 <ul>
-  <li><%= link_to( '삭제', story_task_path( @story, @task ), :method => :delete,
+  <li><%= link_to( '삭제', task_path( @task ), :method => :delete,
     :confirm => '삭제하시겠습니까?' ) %></li>
 </ul>

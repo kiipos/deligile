@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
-  before_filter( :initialize_story )
+  # before_filter( :initialize_story )
   before_filter( :initailize_task, :only => [ :edit, :destroy, :update ] )
   
   protected
   def initailize_task()
     begin
       @task = Task.find( params[ :id ] )
+      @story = @task.story
     rescue
       flash[ :failure ] = 'invalid task id'
       path = story_path( @story ) 
