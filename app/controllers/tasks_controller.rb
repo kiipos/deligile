@@ -1,6 +1,14 @@
 class TasksController < ApplicationController
-  # before_filter( :initialize_story )
+  before_filter( :initialize_story, :only => [ :new, :create ] )
   before_filter( :initailize_task, :only => [ :edit, :destroy, :update ] )
+  before_filter( :initialize_users, :only => [ :edit, :new ] )
+  
+  layout( 'stories' )
+  
+  protected
+  def initialize_users()
+    @users = User.find( :all )
+  end
   
   protected
   def initailize_task()
@@ -43,19 +51,10 @@ class TasksController < ApplicationController
   
   public
   def edit()
-    @users = User.find( :all )
-    # @user_options = users
   end
 
   public
   def create()
-    begin
-      @story = Story.find( params[ :story_id ] )
-    rescue ActiveRecord::RecordNotFound
-      render( 'shared/failure' )
-      return
-    end
-    
     begin
       @task = @story.tasks.create!( params[ :task ] )
     rescue Exception => e
@@ -68,5 +67,6 @@ class TasksController < ApplicationController
   
   public
   def new()
+    @task = Task.new()
   end
 end
